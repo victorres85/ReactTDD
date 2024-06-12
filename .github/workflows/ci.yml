@@ -33,6 +33,9 @@ jobs:
       - name: Run Installation
         run: npm install
 
+      - name: Run Installation
+        run: npm install -g react-scripts
+
       - name: Run single command
         run: npm test
 
