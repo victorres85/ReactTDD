@@ -1,0 +1,65 @@
+name: "CI: Main Workflow"
+run-name: ${{ github.actor }} CI Workflow
+
+env:
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - "**.js"
+  push:
+    branches: ["*"]
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Installation
+        run: yarn install
+
+      - name: Run single command
+        run: yarn lint
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Installation
+        run: yarn install
+
+      - name: Run Preview Deployment
+        run: yarn deploy:preview
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
+          GITHUB_REPO: "NextJS-first-project"
+
+  test_e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: yarn
+
+      - name: Cyppress
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+
+      - name: Cyppress
+        uses: cypress-io/github-action@v6
+        with:
+          browser: firefox
+
+      - name: Cyppress
+        uses: cypress-io/github-action@v6
+        with:
+          browser: edge
