@@ -1,8 +1,8 @@
 import { execSync } from "child_process";
-import fetch from "node-fetch";
+// import fetch from "node-fetch";
 
 console.log("[DEPLOY_PREVIEW]: STARTED");
-const command = "node run deploy:staging";
+const command = "npm run deploy:staging";
 const output = execSync(command, { encoding: "utf8" });
 const lines = output.split("\n");
 const DEPLOY_URL = lines[lines.length - 1];
@@ -13,7 +13,7 @@ console.log(`[DEPLOY_PREVIEW]: DEPLOYED TO: ${DEPLOY_URL}`);
 
 console.log("[GITHUB_COMMENT]: START");
 const { GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_PR_NUMBER } = process.env;
-const GH_COMMENT = `- Deploy URL: [${DEPLOY_URL}](${DEPLOY_URL})`;
+// const GH_COMMENT = `- Deploy URL: [${DEPLOY_URL}](${DEPLOY_URL})`;
 
 const defaultHeaders = {};
 defaultHeaders["authorization"] = `token ${GITHUB_TOKEN}`;
