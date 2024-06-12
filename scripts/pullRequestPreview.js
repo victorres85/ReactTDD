@@ -1,11 +1,10 @@
-import { execSync } from 'child_process';
-import fetch  from 'node-fetch';
-
+import { execSync } from "child_process";
+import fetch from "node-fetch";
 
 console.log("[DEPLOY_PREVIEW]: STARTED");
-const command = "yarn deploy:staging";
-const output = execSync(command, { encoding: 'utf8' })
-const lines = output.split('\n');
+const command = "node run deploy:staging";
+const output = execSync(command, { encoding: "utf8" });
+const lines = output.split("\n");
 const DEPLOY_URL = lines[lines.length - 1];
 console.log(`[DEPLOY_PREVIEW]: DEPLOYED TO: ${DEPLOY_URL}`);
 
