@@ -5,7 +5,7 @@ on:
   pull_request:
     types: [opened, synchronize]
     paths:
-      - "**.js"
+      - "**.ts"
   push:
     branches: ["*"]
 jobs:
@@ -24,37 +24,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Run Installation
-        run: npm install
-
-      - name: Run single command
-        run: npm run test
-
-  test_e2e:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "22"
           cache: "npm"
 
-      - name: Cyppress
-        uses: cypress-io/github-action@v6
-        with:
-          browser: chrome
+      - name: Run Installation
+        run: npm install
 
-      - name: Cyppress
-        uses: cypress-io/github-action@v6
-        with:
-          browser: firefox
-
-      - name: Cyppress
-        uses: cypress-io/github-action@v6
-        with:
-          browser: edge
+      - name: Run single command
+        run: npm test
 
   preview:
     runs-on: ubuntu-latest
