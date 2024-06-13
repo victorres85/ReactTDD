@@ -38,18 +38,3 @@ jobs:
 
       - name: Run single command
         run: npm test
-
-  preview:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Run Installation
-        run: npm install
-
-      - name: Run Preview Deployment
-        run: npm run deploy:preview
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
-          GITHUB_REPO: "NextJS-first-project"
