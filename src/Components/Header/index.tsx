@@ -10,8 +10,8 @@ const Header = () => {
       ></div>
       <img
         className="participant"
-        src="/imagens/participante.png"
-        alt="Participante com um presente na mão"
+        src="/img/participant.png"
+        alt="Participant holding gift"
       />
     </header>
   );

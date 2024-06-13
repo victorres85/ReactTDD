@@ -1,9 +1,11 @@
 import { useState, useRef } from "react";
 import { useAddParticipant } from "../state/hooks/useAddParticipant";
+import { useErrorMessage } from "../state/hooks/useErrorMessage";
 
 const Form = () => {
   const [name, setName] = useState("");
   const addOnList = useAddParticipant();
+  const errorMessage = useErrorMessage();
 
   const inputRef = useRef<HTMLInputElement>(null);
   const addParticipant = (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,6 +25,7 @@ const Form = () => {
         placeholder="Add Paticipants' names"
       />
       <button disabled={!name}>Add</button>
+      {errorMessage && <p role="alert">{errorMessage}</p>}
     </form>
   );
 };
