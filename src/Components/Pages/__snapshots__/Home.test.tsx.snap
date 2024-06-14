@@ -3,24 +3,35 @@
 exports[`Home Page Home Page has to render all the relevant elements 1`] = `
 <div>
   <form>
-    <input
-      placeholder="Add Paticipants' names"
-      type="text"
-      value=""
-    />
-    <button
-      disabled=""
+    <div
+      class="grup-input-btn"
     >
-      Add
-    </button>
+      <input
+        placeholder="Add Paticipants' names"
+        type="text"
+        value=""
+      />
+      <button
+        disabled=""
+      >
+        Add
+      </button>
+    </div>
   </form>
   <ul />
-  <footer>
+  <footer
+    class="home-footer"
+  >
     <button
+      class="botao"
       disabled=""
     >
       Draw Names
     </button>
+    <img
+      alt="Shooping bags"
+      src="/img/bags.png"
+    />
   </footer>
 </div>
 `;
