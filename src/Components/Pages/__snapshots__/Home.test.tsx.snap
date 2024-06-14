@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Page Home Page has to render all the relevant elements 1`] = `
+<div>
+  <form>
+    <input
+      placeholder="Add Paticipants' names"
+      type="text"
+      value=""
+    />
+    <button
+      disabled=""
+    >
+      Add
+    </button>
+  </form>
+  <ul />
+  <footer>
+    <button
+      disabled=""
+    >
+      Draw Names
+    </button>
+  </footer>
+</div>
+`;

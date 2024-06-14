@@ -9,3 +9,8 @@ export const errorState = atom<string>({
   key: "errorState",
   default: "",
 });
+
+export const drawResponse = atom<Map<string, string>>({
+  key: "drawResponse",
+  default: new Map(),
+});
